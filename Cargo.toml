@@ -1,0 +1,20 @@
+[package]
+name = "exec-target"
+version = "0.2.3"
+authors = ["aki <aki.akaguma@hotmail.com>"]
+description = """
+the simple invoke command for test
+"""
+keywords = ["invoke", "command"]
+categories = ["development-tools::testing", "text-processing"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+edition = "2018"
+repository = "https://github.com/aki-akaguma/exec-target"
+
+[dependencies]
+
+[build-dependencies]
+
+[workspace]
+members = ["test-helper"]
