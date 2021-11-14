@@ -1,28 +1,30 @@
-//! the simple invoke command for test
-//!
-//! This invokes external a command and manipulates standard in out.
-//! You can use `std::process::Command` more easily.
-//!
-//! * minimum support rustc 1.43.0
-//!
-//! # Example:
-//!
-//! ```
-//! use exec_target::exec_target_with_env_in;
-//!
-//! let command = "target/debug/exe-stab-grep";
-//! let args = &["--color=always", "-e", "c"];
-//! let envs = vec![("GREP_COLORS", "ms=01;32")];
-//! let inp = b"abcdefg\n" as &[u8];
-//!
-//! let oup = exec_target_with_env_in(command, args, envs, inp);
-//!
-//! assert_eq!(oup.stderr, "");
-//! assert_eq!(oup.stdout, "ab\u{1b}[01;32m\u{1b}[Kc\u{1b}[m\u{1b}[Kdefg\n");
-//! assert_eq!(oup.status.success(), true);
-//! ```
-//!
+/*!
+the simple invoke command for test
 
+This invokes external a command and manipulates standard in out.
+You can use `std::process::Command` more easily.
+
+# Features
+
+- minimum support rustc 1.43.1 (8d69840ab 2020-05-04)
+
+# Example
+
+```rust
+use exec_target::exec_target_with_env_in;
+
+let command = "target/debug/exe-stab-grep";
+let args = &["--color=always", "-e", "c"];
+let envs = vec![("GREP_COLORS", "ms=01;32")];
+let inp = b"abcdefg\n" as &[u8];
+
+let oup = exec_target_with_env_in(command, args, envs, inp);
+
+assert_eq!(oup.stderr, "");
+assert_eq!(oup.stdout, "ab\u{1b}[01;32m\u{1b}[Kc\u{1b}[m\u{1b}[Kdefg\n");
+assert_eq!(oup.status.success(), true);
+```
+*/
 use std::collections::HashMap;
 use std::env;
 use std::ffi::OsStr;
@@ -126,7 +128,7 @@ where
 /// This invokes external a command and manipulates standard in out.
 /// You can use `std::process::Command` more easily.
 ///
-/// # Example:
+/// # Example
 ///
 /// ```
 /// use exec_target::exec_target_with_env_in;
