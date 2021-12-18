@@ -2,6 +2,11 @@ TBD
 ===
 Unreleased changes. Release notes have not yet been written.
 
+0.2.5 (2021-12-18)
+=====
+
+* `LD_LIBRARY_PATH` leaves an execution environment.
+
 0.2.4 (2021-11-14)
 =====
 

@@ -5,9 +5,11 @@ the simple invoke command for test
 This invokes external a command and manipulates standard in out.
 You can use `std::process::Command` more easily.
 
-* minimum support rustc 1.43.0
+## Features
 
-## Example:
+- minimum support rustc 1.43.1 (8d69840ab 2020-05-04)
+
+## Example
 
 ```rust
 use exec_target::exec_target_with_env_in;
@@ -23,7 +25,6 @@ assert_eq!(oup.stderr, "");
 assert_eq!(oup.stdout, "ab\u{1b}[01;32m\u{1b}[Kc\u{1b}[m\u{1b}[Kdefg\n");
 assert_eq!(oup.status.success(), true);
 ```
-
 
 # Changelogs
 
