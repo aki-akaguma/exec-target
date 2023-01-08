@@ -1,5 +1,10 @@
 # exec-target
 
+[![crate][crate-image]][crate-link]
+[![Docs][docs-image]][docs-link]
+![Rust Version][rustc-image]
+![Apache2/MIT licensed][license-image]
+
 the simple invoke command for test
 
 This invokes external a command and manipulates standard in out.
@@ -40,3 +45,12 @@ This project is licensed under either of
    https://opensource.org/licenses/MIT)
 
 at your option.
+
+[//]: # (badges)
+
+[crate-image]: https://img.shields.io/crates/v/exec-target.svg
+[crate-link]: https://crates.io/crates/exec-target
+[docs-image]: https://docs.rs/exec-target/badge.svg
+[docs-link]: https://docs.rs/exec-target/
+[rustc-image]: https://img.shields.io/badge/rustc-1.43.1+-blue.svg
+[license-image]: https://img.shields.io/badge/license-Apache2.0/MIT-blue.svg
