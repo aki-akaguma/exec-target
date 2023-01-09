@@ -48,7 +48,7 @@ where
     V: AsRef<OsStr>,
 {
     let filtered_env: HashMap<String, String> = env::vars()
-        .filter(|&(ref k, _)| k == "TERM" || k == "TZ" || k == "PATH" || k == "LD_LIBRARY_PATH")
+        .filter(|(k, _)| k == "TERM" || k == "TZ" || k == "PATH" || k == "LD_LIBRARY_PATH")
         .collect();
     cmd.env_clear()
         .envs(filtered_env)
