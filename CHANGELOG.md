@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [0.2.7] (2023-01-10)
+### Changed
+* bump version: 0.2.7
+
 ## [0.2.6] (2023-01-10)
 ### Added
 * badges into `README.md`
@@ -97,7 +101,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 0.1.0 (2017-11-06)
 * first commit
 
-[Unreleased]: https://github.com/aki-akaguma/exec-target/compare/v0.2.5..HEAD
+[Unreleased]: https://github.com/aki-akaguma/exec-target/compare/v0.2.7..HEAD
+[0.2.7]: https://github.com/aki-akaguma/exec-target/compare/v0.2.6..v0.2.7
+[0.2.6]: https://github.com/aki-akaguma/exec-target/compare/v0.2.5..v0.2.6
 [0.2.5]: https://github.com/aki-akaguma/exec-target/compare/v0.2.4..v0.2.5
 [0.2.4]: https://github.com/aki-akaguma/exec-target/compare/v0.2.3..v0.2.4
 [0.2.3]: https://github.com/aki-akaguma/exec-target/releases/tag/v0.2.3
