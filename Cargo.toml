@@ -1,6 +1,6 @@
 [package]
 name = "exec-target"
-version = "0.2.5"
+version = "0.2.6"
 authors = ["aki <aki.akaguma@hotmail.com>"]
 description = """
 the simple invoke command for test
