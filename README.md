@@ -12,7 +12,7 @@ You can use `std::process::Command` more easily.
 
 ## Features
 
-- minimum support rustc 1.43.1 (8d69840ab 2020-05-04)
+- minimum support rustc 1.56.1 (59eed8a2a 2021-11-01)
 
 ## Example
 
@@ -52,5 +52,5 @@ at your option.
 [crate-link]: https://crates.io/crates/exec-target
 [docs-image]: https://docs.rs/exec-target/badge.svg
 [docs-link]: https://docs.rs/exec-target/
-[rustc-image]: https://img.shields.io/badge/rustc-1.43.1+-blue.svg
+[rustc-image]: https://img.shields.io/badge/rustc-1.56+-blue.svg
 [license-image]: https://img.shields.io/badge/license-Apache2.0/MIT-blue.svg
