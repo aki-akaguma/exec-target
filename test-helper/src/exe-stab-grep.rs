@@ -3,29 +3,26 @@ fn main() {
     let _program = &args[0];
     let args = &args[1..];
     //println!("{:?}", args);
-    if args_eq(
-        &args,
-        &["--color=always", "-e", "exec-target", "Cargo.toml"],
-    ) {
+    if args_eq(args, &["--color=always", "-e", "exec-target", "Cargo.toml"]) {
         let msg = "name = \"\u{1b}[01;31m\u{1b}[Kexec-target\u{1b}[m\u{1b}[K\"\n";
         print_and_exit(msg);
     }
-    if args_eq(&args, &["--color=never", "-e", "exec-target", "Cargo.toml"]) {
+    if args_eq(args, &["--color=never", "-e", "exec-target", "Cargo.toml"]) {
         let msg = "name = \"exec-target\"\n";
         print_and_exit(msg);
     }
     match std::env::var("GREP_COLORS") {
         Ok(ref s) if s.as_str() == "ms=01;32" => {
-            if args_eq(&args, &["--color=always", "-e", "c"]) {
+            if args_eq(args, &["--color=always", "-e", "c"]) {
                 let mut input = String::new();
                 match std::io::stdin().read_line(&mut input) {
                     Ok(_n) => {
                         //println!("{} bytes read", n);
                         if input != "abcdefg\n" {
-                            eprintln!("invalid input: '{}'", input);
+                            eprintln!("invalid input: '{input}'");
                         }
                     }
-                    Err(error) => eprintln!("error: {}", error),
+                    Err(error) => eprintln!("error: {error}"),
                 }
                 //
                 let msg = "ab\u{1b}[01;32m\u{1b}[Kc\u{1b}[m\u{1b}[Kdefg\n";
@@ -46,10 +43,10 @@ fn args_eq(args: &[String], sm: &[&str]) -> bool {
             return false;
         }
     }
-    return true;
+    true
 }
 
 fn print_and_exit(msg: &str) {
-    print!("{}", msg);
+    print!("{msg}");
     std::process::exit(0);
 }

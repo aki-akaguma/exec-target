@@ -2,35 +2,35 @@ mod test_exe_stab_cat {
     use exec_target::args_from;
     use exec_target::exec_target;
     use exec_target::exec_target_with_in;
-    const TARGET_EXE: &'static str = env!("CARGO_BIN_EXE_exe-stab-cat");
+    const TARGET_EXE: &str = env!("CARGO_BIN_EXE_exe-stab-cat");
     //
     #[test]
     fn test_invalid_flag() {
-        let oup = exec_target(TARGET_EXE, &["-x"]);
+        let oup = exec_target(TARGET_EXE, ["-x"]);
         assert_eq!(
             oup.stderr,
             "exe-mock-cat: invalid option -- \'x\'\nTry \'exe-mock-cat --help\' for more information.\n"
         );
         assert_eq!(oup.stdout, "");
-        assert_eq!(oup.status.success(), false);
+        assert!(!oup.status.success());
     }
     #[test]
     fn test_valid_cat_in() {
         let oup = exec_target_with_in(TARGET_EXE, args_from(""), b"abcdefg\n" as &[u8]);
         assert_eq!(oup.stderr, "");
         assert_eq!(oup.stdout, "abcdefg\n");
-        assert_eq!(oup.status.success(), true);
+        assert!(oup.status.success());
     }
     #[test]
     fn test_valid_cat_in_empty() {
         let oup = exec_target_with_in(TARGET_EXE, &[] as &[&str], b"abcdefg\n");
         assert_eq!(oup.stderr, "");
         assert_eq!(oup.stdout, "abcdefg\n");
-        assert_eq!(oup.status.success(), true);
+        assert!(oup.status.success());
     }
     #[test]
     fn test_help() {
-        let oup = exec_target(TARGET_EXE, &["--help"]);
+        let oup = exec_target(TARGET_EXE, ["--help"]);
         assert_eq!(oup.stderr, "");
         assert_eq!(
             oup.stdout,
@@ -52,7 +52,7 @@ mod test_exe_stab_cat {
                 "      --version  output version information and exit\n",
             )
         );
-        assert_eq!(oup.status.success(), true);
+        assert!(oup.status.success());
     }
 }
 
@@ -60,7 +60,7 @@ mod test_exe_stab_env {
     use exec_target::args_from;
     use exec_target::exec_target_with_env;
     use std::collections::HashMap;
-    const TARGET_EXE: &'static str = env!("CARGO_BIN_EXE_exe-stab-env");
+    const TARGET_EXE: &str = env!("CARGO_BIN_EXE_exe-stab-env");
     //
     #[test]
     fn test_valid_env_env_by_hashmap() {
@@ -70,19 +70,10 @@ mod test_exe_stab_env {
         let oup = exec_target_with_env(TARGET_EXE, args_from(""), env);
         //
         assert_eq!(oup.stderr, "");
-        match oup.stdout.find("TEST_TEST_RUST_ENV=abcdef\n") {
-            Some(_) => {}
-            None => assert!(false, "not found: TEST_TEST_RUST_ENV"),
-        }
-        match oup.stdout.find("LANG=C\n") {
-            Some(_) => {}
-            None => assert!(false, "not found: LANG"),
-        }
-        match oup.stdout.find("PATH=") {
-            Some(_) => {}
-            None => assert!(false, "not found: PATH"),
-        }
-        assert_eq!(oup.status.success(), true);
+        assert!(oup.stdout.contains("TEST_TEST_RUST_ENV=abcdef\n"));
+        assert!(oup.stdout.contains("LANG=C\n"));
+        assert!(oup.stdout.contains("PATH="));
+        assert!(oup.status.success());
     }
     #[test]
     fn test_valid_env_env_by_vec() {
@@ -93,19 +84,10 @@ mod test_exe_stab_env {
         );
         //
         assert_eq!(oup.stderr, "");
-        match oup.stdout.find("TEST_TEST_RUST_ENV=abcdef\n") {
-            Some(_) => {}
-            None => assert!(false, "not found: TEST_TEST_RUST_ENV"),
-        }
-        match oup.stdout.find("LANG=C\n") {
-            Some(_) => {}
-            None => assert!(false, "not found: LANG"),
-        }
-        match oup.stdout.find("PATH=") {
-            Some(_) => {}
-            None => assert!(false, "not found: PATH"),
-        }
-        assert_eq!(oup.status.success(), true);
+        assert!(oup.stdout.contains("TEST_TEST_RUST_ENV=abcdef\n"));
+        assert!(oup.stdout.contains("LANG=C\n"));
+        assert!(oup.stdout.contains("PATH="));
+        assert!(oup.status.success());
     }
 }
 
@@ -113,30 +95,30 @@ mod test_exe_stab_grep {
     use exec_target::args_from;
     use exec_target::exec_target;
     use exec_target::exec_target_with_env_in;
-    const TARGET_EXE: &'static str = env!("CARGO_BIN_EXE_exe-stab-grep");
+    const TARGET_EXE: &str = env!("CARGO_BIN_EXE_exe-stab-grep");
     //
     #[test]
     fn test_valid_grep_color() {
         let oup = exec_target(
             TARGET_EXE,
-            &["--color=always", "-e", "exec-target", "Cargo.toml"],
+            ["--color=always", "-e", "exec-target", "Cargo.toml"],
         );
         assert_eq!(oup.stderr, "");
         assert_eq!(
             oup.stdout,
             "name = \"\u{1b}[01;31m\u{1b}[Kexec-target\u{1b}[m\u{1b}[K\"\n"
         );
-        assert_eq!(oup.status.success(), true);
+        assert!(oup.status.success());
     }
     #[test]
     fn test_valid_grep() {
         let oup = exec_target(
             TARGET_EXE,
-            &["--color=never", "-e", "exec-target", "Cargo.toml"],
+            ["--color=never", "-e", "exec-target", "Cargo.toml"],
         );
         assert_eq!(oup.stderr, "");
         assert_eq!(oup.stdout, "name = \"exec-target\"\n");
-        assert_eq!(oup.status.success(), true);
+        assert!(oup.status.success());
     }
     #[test]
     fn test_valid_grep_2() {
@@ -146,30 +128,30 @@ mod test_exe_stab_grep {
         );
         assert_eq!(oup.stderr, "");
         assert_eq!(oup.stdout, "name = \"exec-target\"\n");
-        assert_eq!(oup.status.success(), true);
+        assert!(oup.status.success());
     }
     #[test]
     fn test_valid_grep_env_in() {
         let oup = exec_target_with_env_in(
             TARGET_EXE,
-            &["--color=always", "-e", "c"],
+            ["--color=always", "-e", "c"],
             vec![("GREP_COLORS", "ms=01;32")],
             b"abcdefg\n" as &[u8],
         );
         assert_eq!(oup.stderr, "");
         assert_eq!(oup.stdout, "ab\u{1b}[01;32m\u{1b}[Kc\u{1b}[m\u{1b}[Kdefg\n");
-        assert_eq!(oup.status.success(), true);
+        assert!(oup.status.success());
     }
     #[test]
     fn test_valid_grep_env_in_as_bytes() {
         let oup = exec_target_with_env_in(
             TARGET_EXE,
-            &["--color=always", "-e", "c"],
+            ["--color=always", "-e", "c"],
             vec![("GREP_COLORS", "ms=01;32")],
             "abcdefg\n".as_bytes(),
         );
         assert_eq!(oup.stderr, "");
         assert_eq!(oup.stdout, "ab\u{1b}[01;32m\u{1b}[Kc\u{1b}[m\u{1b}[Kdefg\n");
-        assert_eq!(oup.status.success(), true);
+        assert!(oup.status.success());
     }
 }

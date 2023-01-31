@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 * edition: "2018" to "2021"
 
+### Fixed
+* clippy: `uninlined_format_args`, `needless_borrow`, `needless_return`
+* clippy: `redundant_static_lifetimes`, `assertions_on_constants`
+
 
 ## [0.2.7] (2023-01-10)
 ### Changed

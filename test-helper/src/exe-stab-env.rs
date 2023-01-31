@@ -8,6 +8,6 @@ fn main() {
 
 fn do_proc() {
     for (key, value) in std::env::vars() {
-        println!("{}={}", key, value);
+        println!("{key}={value}");
     }
 }

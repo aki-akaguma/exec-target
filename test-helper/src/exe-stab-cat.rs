@@ -22,7 +22,7 @@ fn main() {
 }
 
 fn eprint_and_exit(msg: &str) {
-    eprint!("{}", msg);
+    eprint!("{msg}");
     std::process::exit(1);
 }
 
@@ -44,7 +44,7 @@ fn print_help_and_exit() {
         "      --help     display this help and exit\n",
         "      --version  output version information and exit\n",
     );
-    print!("{}", help_msg);
+    print!("{help_msg}");
     std::process::exit(0);
 }
 
@@ -54,7 +54,7 @@ fn do_proc() {
     loop {
         match fin.read_line(&mut line) {
             Ok(n) if n > 0 => {
-                print!("{}", line);
+                print!("{line}");
                 line.clear();
             }
             _ => return,
