@@ -1,4 +1,4 @@
-#[cfg(not(windows))]
+#[cfg(target_os = "linux")]
 mod test_exe_nix_cat {
     use exec_target::args_from;
     use exec_target::exec_target;
@@ -69,7 +69,7 @@ mod test_exe_nix_cat {
     }
 }
 
-#[cfg(not(windows))]
+#[cfg(target_os = "linux")]
 mod test_exe_nix_env {
     use exec_target::args_from;
     use exec_target::exec_target_with_env;
@@ -105,7 +105,7 @@ mod test_exe_nix_env {
     }
 }
 
-#[cfg(not(windows))]
+#[cfg(target_os = "linux")]
 mod test_exe_nix_grep {
     use exec_target::args_from;
     use exec_target::exec_target;
