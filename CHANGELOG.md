@@ -5,7 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] *
+## [Unreleased]
+
+
+## [0.2.9] (2023-02-12)
 ### Removed
 * `COPYING`
 
@@ -14,7 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 * `LICENSE-APACHE`, `LICENSE-MIT`
-
 
 ## [0.2.8] (2023-01-31)
 ### Added
@@ -125,7 +127,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 0.1.0 (2017-11-06)
 * first commit
 
-[Unreleased]: https://github.com/aki-akaguma/exec-target/compare/v0.2.8..HEAD
+[Unreleased]: https://github.com/aki-akaguma/exec-target/compare/v0.2.9..HEAD
+[0.2.9]: https://github.com/aki-akaguma/exec-target/compare/v0.2.8..v0.2.9
 [0.2.8]: https://github.com/aki-akaguma/exec-target/compare/v0.2.7..v0.2.8
 [0.2.7]: https://github.com/aki-akaguma/exec-target/compare/v0.2.6..v0.2.7
 [0.2.6]: https://github.com/aki-akaguma/exec-target/compare/v0.2.5..v0.2.6
