@@ -6,7 +6,7 @@ You can use `std::process::Command` more easily.
 
 # Features
 
-- minimum support rustc 1.56.1 (59eed8a2a 2021-11-01)
+- minimum support rustc 1.58.0 (02072b482 2022-01-11)
 
 # Example
 
@@ -113,7 +113,15 @@ where
     let mut child = cmd.spawn().expect("failed to execute child");
     {
         let stdin = child.stdin.as_mut().expect("failed to get stdin");
-        stdin.write_all(in_bytes).expect("failed to write to stdin");
+        let r = stdin.write_all(in_bytes);
+        match r {
+            Err(ioe) if ioe.kind() == std::io::ErrorKind::BrokenPipe => {
+                // nothing todo
+            }
+            _ => {
+                r.expect("failed to write to stdin");
+            }
+        }
     }
     let output: Output = child.wait_with_output().expect("failed to wait on child");
     //
@@ -167,7 +175,15 @@ where
     let mut child = cmd.spawn().expect("failed to execute child");
     {
         let stdin = child.stdin.as_mut().expect("failed to get stdin");
-        stdin.write_all(in_bytes).expect("failed to write to stdin");
+        let r = stdin.write_all(in_bytes);
+        match r {
+            Err(ioe) if ioe.kind() == std::io::ErrorKind::BrokenPipe => {
+                // nothing todo
+            }
+            _ => {
+                r.expect("failed to write to stdin");
+            }
+        }
     }
     let output: Output = child.wait_with_output().expect("failed to wait on child");
     //

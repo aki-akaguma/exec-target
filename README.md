@@ -15,7 +15,7 @@ You can use `std::process::Command` more easily.
 
 ## Features
 
-- minimum support rustc 1.56.1 (59eed8a2a 2021-11-01)
+- minimum support rustc 1.58.0 (02072b482 2022-01-11)
 
 ## Example
 
@@ -55,7 +55,7 @@ at your option.
 [crate-link]: https://crates.io/crates/exec-target
 [docs-image]: https://docs.rs/exec-target/badge.svg
 [docs-link]: https://docs.rs/exec-target/
-[rustc-image]: https://img.shields.io/badge/rustc-1.56+-blue.svg
+[rustc-image]: https://img.shields.io/badge/rustc-1.58+-blue.svg
 [license-image]: https://img.shields.io/badge/license-Apache2.0/MIT-blue.svg
 [test-ubuntu-image]: https://github.com/aki-akaguma/exec-target/actions/workflows/test-ubuntu.yml/badge.svg
 [test-ubuntu-link]: https://github.com/aki-akaguma/exec-target/actions/workflows/test-ubuntu.yml
