@@ -1,6 +1,6 @@
 [package]
 name = "exec-target"
-version = "0.2.9"
+version = "0.2.10"
 authors = ["aki <aki.akaguma@hotmail.com>"]
 description = """
 the simple invoke command for test
@@ -10,7 +10,7 @@ categories = ["development-tools::testing", "text-processing"]
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 edition = "2021"
-rust-version = "1.56.0"
+rust-version = "1.58.0"
 repository = "https://github.com/aki-akaguma/exec-target"
 
 [dependencies]
